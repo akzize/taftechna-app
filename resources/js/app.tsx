@@ -5,22 +5,33 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { initializeTheme } from './hooks/use-appearance';
+import { LanguageProvider } from './contexts/LanguageContext';
+import MainLayout from './layouts/main-layout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
-    resolve: (name) =>
-        resolvePageComponent(
+    resolve: (name) => {
+        const page = resolvePageComponent(
             `./pages/${name}.tsx`,
             import.meta.glob('./pages/**/*.tsx'),
-        ),
+        )
+
+        page.then((module: any) => {
+            module.default.layout = module.default.layout || ((page: any) => <MainLayout children={page}/>);
+        });
+
+        return page;
+    },
     setup({ el, App, props }) {
         const root = createRoot(el);
 
         root.render(
             <StrictMode>
-                <App {...props} />
+                <LanguageProvider>
+                    <App {...props} />
+                </LanguageProvider>
             </StrictMode>,
         );
     },
@@ -30,4 +41,4 @@ createInertiaApp({
 });
 
 // This will set light / dark mode on load...
-initializeTheme();
+// initializeTheme();
