@@ -84,12 +84,15 @@ export interface EventItem {
     images?: string[];
 }
 
+interface Image {
+    path: string;
+    alt: string;
+}
 export interface GalleryAlbum {
     id: string;
     title: string;
-    titleAr: string;
-    titleFr: string;
+    description?: string;
     date: string;
     coverImage: string;
-    images: string[];
+    images: Image[];
 }
