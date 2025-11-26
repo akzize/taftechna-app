@@ -1,18 +1,17 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Models\Album;
 use App\Models\News;
 use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 
@@ -27,11 +26,7 @@ Route::get('/events', [EventController::class, 'index'])->name('events');
 
 Route::get('/events/{id}', [EventController::class, 'show']);
 
-Route::get('/gallery', function () {
-    return Inertia::render('Gallery', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('gallery');
+Route::get('/gallery', [AlbumController::class, 'index'])->name('gallery');
 
 Route::get('/about', function () {
     return Inertia::render('About', [
