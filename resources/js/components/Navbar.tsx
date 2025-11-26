@@ -18,7 +18,7 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: t("الرئيسية", "Accueil", "Home"), icon: Home },
     { to: "/news", label: t("الأخبار", "Actualités", "News"), icon: Newspaper },
-    { to: "/events", label: t("الفعاليات", "Événements", "Events"), icon: Calendar },
+    { to: "/events", label: t("الأنشطة", "Événements", "Events"), icon: Calendar },
     { to: "/gallery", label: t("المعرض", "Galerie", "Gallery"), icon: ImageIcon },
     { to: "/about", label: t("عن المدرسة", "À propos", "About"), icon: Info },
     { to: "/contact", label: t("اتصل بنا", "Contact", "Contact"), icon: Phone },

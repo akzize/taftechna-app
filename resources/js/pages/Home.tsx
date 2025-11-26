@@ -65,7 +65,7 @@ const Home: React.FC<HomeProps> = ({ pinnedNews, pinnedEvents }) => {
             { icon: Users, value: "500+", label: t("طالب وطالبة", "Élèves", "Students"), color: "from-primary to-primary/80" },
             { icon: BookOpen, value: "30+", label: t("معلم ومعلمة", "Enseignants", "Teachers"), color: "from-secondary to-secondary/80" },
             { icon: Award, value: "15+", label: t("جوائز وإنجازات", "Prix et réalisations", "Awards & Achievements"), color: "from-accent to-accent/80" },
-            { icon: Calendar, value: "20+", label: t("فعالية سنوية", "Événements annuels", "Annual Events"), color: "from-primary to-secondary" },
+            { icon: Calendar, value: "20+", label: t("أنشطة سنوية", "Événements annuels", "Annual Events"), color: "from-primary to-secondary" },
           ].map((stat, index) => (
             <Card key={index} className="shadow-elevated hover-lift">
               <CardContent className="p-6 text-center">
@@ -108,7 +108,7 @@ const Home: React.FC<HomeProps> = ({ pinnedNews, pinnedEvents }) => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold mb-2">{t("الفعاليات القادمة", "Événements à venir", "Upcoming Events")}</h2>
+              <h2 className="text-3xl font-bold mb-2">{t("الأنشطة القادمة", "Événements à venir", "Upcoming Events")}</h2>
               <p className="text-muted-foreground">{t("لا تفوت مشاركتنا في هذه الأنشطة", "Ne manquez pas nos activités", "Don't miss our activities")}</p>
             </div>
             <Link href="/events">
