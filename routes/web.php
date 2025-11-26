@@ -51,4 +51,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
+Route::fallback(function(){
+    return Inertia::render('NotFound');
+});
+
 require __DIR__ . '/settings.php';
