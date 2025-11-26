@@ -1,15 +1,16 @@
-import { Link, useLocation } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import notFoundImage from "@/assets/404-illustration.jpg";
 
 const NotFound = () => {
-  const location = useLocation();
+  const { url } = usePage();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
+    console.error("404 Error: User attempted to access non-existent route:", url);
+  }, [url]);
+
 
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-4 py-20">
