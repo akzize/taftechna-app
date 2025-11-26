@@ -4,12 +4,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import NewsCard from "@/components/NewsCard";
-import { newsItems } from "@/data/mockData";
+import { NewsItem } from "@/types";
+// import { newsItems } from "@/data/mockData";
 
-const News = () => {
+interface NewsProps {
+  newsItems: NewsItem[]; // Assuming EventItem is a defined type/interface
+}
+
+const News:React.FC<NewsProps> = ({newsItems}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("الكل");
-
+  console.log(newsItems);
   const categories = ["الكل", ...Array.from(new Set(newsItems.map((n) => n.categoryAr)))];
 
   const filteredNews = newsItems.filter((news) => {

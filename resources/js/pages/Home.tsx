@@ -7,13 +7,19 @@ import EventCard from "@/components/EventCard";
 import { newsItems, events, galleryAlbums } from "@/data/mockData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroBanner from "@/assets/hero-banner.jpg";
+import { EventItem, NewsItem } from '@/types';
 
-const Home = () => {
+interface HomeProps {
+  pinnedNews: NewsItem[],
+  pinnedEvents: EventItem[],
+}
+
+const Home: React.FC<HomeProps> = ({ pinnedNews, pinnedEvents }) => {
   const { language, t } = useLanguage();
-  const latestNews = newsItems.slice(0, 3);
-  const upcomingEvents = events.slice(0, 3);
+  const latestNews = pinnedNews;
+  const upcomingEvents = pinnedEvents;
   const recentAlbum = galleryAlbums[0];
-  
+
   const albumTitle = language === "fr" ? recentAlbum.titleFr : language === "en" ? recentAlbum.title : recentAlbum.titleAr;
 
   return (
@@ -28,10 +34,13 @@ const Home = () => {
         />
         <div className="relative z-20 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 animate-fade-in">
-            {t("مدرسة تافتشنا", "École Taftechna", "Taftechna School")}
+            {t("مدارس تفتشنا الرائدة", "École Taftechna", "Taftechna School")}
           </h1>
+          <p className="text-4xl md:text-5xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            {t("من أجل تعليم ذو جودة للجميع", "Construire l'avenir avec des racines authentiques", "Building the Future with Authentic Roots")}
+          </p>
           <p className="text-xl md:text-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            {t("نبني المستقبل بجذور أصيلة", "Construire l'avenir avec des racines authentiques", "Building the Future with Authentic Roots")}
+            {t("نحن نعمل على تعزيز جودة التعليم والتواصل بين جميع مكونات  المدرسة.", "Construire l'avenir avec des racines authentiques", "Building the Future with Authentic Roots")}
           </p>
           <div className="flex flex-wrap gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <Link href="/about">
@@ -85,11 +94,13 @@ const Home = () => {
             </Button>
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestNews.map((news) => (
-            <NewsCard key={news.id} news={news} />
-          ))}
-        </div>
+        {latestNews &&
+          (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {latestNews.map((news) => (
+              <NewsCard key={news.id} news={news} />
+            ))}
+          </div>)
+        }
       </section>
 
       {/* Upcoming Events */}
@@ -107,11 +118,13 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
+          {upcomingEvents &&
+            (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>)
+          }
         </div>
       </section>
 

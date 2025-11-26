@@ -41,3 +41,55 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface NewsItem {
+    id: string;
+    title: string;
+    titleAr: string;
+    titleFr: string;
+    date: string;
+    category: string;
+    categoryAr: string;
+    categoryFr: string;
+    excerpt: string;
+    excerptAr: string;
+    excerptFr: string;
+    content: string;
+    contentAr: string;
+    contentFr: string;
+    coverImage: string;
+    images?: string[];
+    publishedAt: string
+}
+
+export interface EventItem {
+    id: string;
+    title?: string;
+    titleAr: string;
+    titleFr?: string;
+    date?: string;
+    startDate: string;
+    endDate: string;
+    time?: string;
+    location?: string;
+    locationAr?: string;
+    locationFr?: string;
+    category?: string;
+    categoryAr?: string;
+    categoryFr?: string;
+    content?: string;
+    contentAr: string;
+    contentFr?: string;
+    coverImage: string;
+    images?: string[];
+}
+
+export interface GalleryAlbum {
+    id: string;
+    title: string;
+    titleAr: string;
+    titleFr: string;
+    date: string;
+    coverImage: string;
+    images: string[];
+}
