@@ -2,7 +2,7 @@ import { Link, usePage } from "@inertiajs/react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
-import notFoundImage from "@/assets/404-illustration.jpg";
+import notFoundImage from "@/assets/404-illustration.png";
 
 const NotFound = () => {
   const location = usePage();
