@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\EventCategory;
+use App\Models\NewsCategory;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,15 +15,51 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::firstOrCreate(
-            ['email' => 'test@example.com'],
+        $newsCategories = [
             [
-                'name' => 'Test User',
-                'password' => 'password',
-                'email_verified_at' => now(),
+                'name' => 'مشروع',
+                'slug' => 'mshroaa'
+            ],
+            [
+                'name' => 'إنجازات',
+                'slug' => 'injazat'
+            ],
+            [
+                'name' => 'إعلانات',
+                'slug' => 'iaalanat'
+            ],
+            [
+                'name' => 'أخبار',
+                'slug' => 'akhbar'
             ]
-        );
+        ];
+
+        foreach($newsCategories as $category){
+            NewsCategory::create($category);
+        }
+
+        $eventsCategories = [
+            [
+                'name' => 'احتفال',
+                'slug' => 'ahtfal'
+            ],
+            [
+                'name' => 'أكاديمي',
+                'slug' => 'akadimy'
+            ],
+            [
+                'name' => 'رياضة',
+                'slug' => 'ryada'
+            ],
+            [
+                'name' => 'ثقافي',
+                'slug' => 'thakafy'
+            ]
+        ];
+
+        foreach ($eventsCategories as $category) {
+            EventCategory::create($category);
+        }
     }
 }
