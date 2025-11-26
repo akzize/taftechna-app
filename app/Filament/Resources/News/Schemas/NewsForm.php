@@ -22,6 +22,7 @@ class NewsForm
         return $schema
             ->components([
                 TextInput::make('title_ar')
+                    ->label(__('resources.news.title'))
                     ->reactive()
                     ->live()
                     ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
@@ -34,19 +35,22 @@ class NewsForm
                     ->unique(ignoreRecord: true)
                     ->required(),
                 Select::make('category_id')
+                    ->label(__('resources.news.category'))
                     ->relationship('category', 'name')
-                ->createOptionForm([
-                    TextInput::make('name')
-                        ->reactive()
-                        ->required()
-                        ->afterStateUpdated(function ($state, callable $set) {
-                            $slug = Str::slug($state);
-                            $set('slug', $slug);
-                        }),
-                    TextInput::make('slug'),
-                ]),
-                Textarea::make('excerpt'),
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->reactive()
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $slug = Str::slug($state);
+                                $set('slug', $slug);
+                            }),
+                        TextInput::make('slug'),
+                    ]),
+                Textarea::make('excerpt')
+                    ->label(__('resources.news.excerpt')),
                 RichEditor::make('content')
+                    ->label(__('resources.news.content'))
                     ->required()
                     ->toolbarButtons([
                         ['bold', 'italic', 'underline', 'strike', 'link'],
@@ -58,13 +62,16 @@ class NewsForm
                     ->columnSpanFull(),
 
                 FileUpload::make('cover_image')
+                    ->label(__('resources.news.cover_image'))
                     ->image()
                     ->disk('public')
                     ->directory('news/images')
                     ->required(),
                 Toggle::make('is_published')
+                    ->label(__('resources.news.is_published'))
                     ->required(),
                 DatePicker::make('published_at')
+                    ->label(__('resources.news.published_at'))
                     ->default(today())
                     ->native(false)
                     ->required(),

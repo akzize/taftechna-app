@@ -53,7 +53,7 @@ const NewsDetail: React.FC<NewsProps> = ({ news }) => {
             {/* Featured Image */}
             <div className="aspect-video overflow-hidden ">
               <img
-                src={"/storage/" + news.coverImage}
+                src={news.coverImage}
                 alt={news.titleAr}
                 className="w-full h-full object-cover"
               />

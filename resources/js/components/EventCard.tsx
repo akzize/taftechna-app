@@ -24,7 +24,7 @@ const EventCard = ({ event }: EventCardProps) => {
     <Card className="py-0 overflow-hidden hover-lift">
       <div className="aspect-video overflow-hidden">
         <img
-          src={"/storage/" + event.coverImage}
+          src={event.coverImage}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />

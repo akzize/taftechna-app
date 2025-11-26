@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Filament\Resources\Albums\Schemas;
+
+use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
+
+class AlbumForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextInput::make('title')
+                    ->label(__('resources.album.title'))
+                    ->reactive()
+                    ->live()
+                    ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
+                        $slug = Str::slug($state);
+                        $set('slug', $slug);
+                    })
+                    ->required(),
+                TextInput::make('slug')
+                    ->required(),
+                Textarea::make('description')
+                ->label(__('resources.album.description'))
+                ->columnSpanFull(),
+                FileUpload::make('cover_image')
+                ->label(__('resources.album.cover_image'))
+
+                ->image()
+                    ->disk('public')
+                    ->directory('album/images')
+                    ->required(),
+                // FileUpload::make('images')
+                //     ->multiple()
+                //     ->directory('album/images')
+                //     ->disk('public'),
+                Repeater::make('images')
+                ->label(__('resources.album.album_images'))
+                    ->schema([
+                        FileUpload::make('path')
+                            ->disk('public')
+                            ->directory('album/images')
+                            ->image()
+                            ->required(),
+
+                        // TextInput::make('caption')
+                        //     ->label('Caption')
+                        //     ->maxLength(255),
+
+                        // TextInput::make('alt')
+                        //     ->label('Alt Text')
+                        //     ->maxLength(255),
+                    ])
+                    ->grid(3)
+                    ->addActionLabel(__('resources.album.add_image'))
+                    ->collapsible()
+                    ->columnSpanFull(),
+                DatePicker::make('date')
+                ->label(__('resources.album.date'))
+
+                ->required(),
+                DateTimePicker::make('published_at')
+                ->label(__('resources.album.published_at'))
+                ->default(today())
+                    ->required(),
+            ]);
+    }
+}

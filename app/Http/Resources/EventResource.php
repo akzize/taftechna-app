@@ -25,7 +25,7 @@ class EventResource extends JsonResource
             'startDate' => $this->start_date,
             'endDate' => $this->end_date,
             'location' => $this->location,
-            'coverImage' => $this->cover_image,
+            'coverImage' => "/storage/".$this->cover_image,
             'isPublished' => $this->is_published,
             'publishedAt' => $this->published_at,
             'createdAt' => $this->created_at,

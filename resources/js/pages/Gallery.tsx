@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { Calendar, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { galleryAlbums } from "@/data/mockData";
+import { GalleryAlbum } from "@/types";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
-const Gallery = () => {
+interface GalleryProps {
+  galleryAlbums: GalleryAlbum[]
+}
+
+const Gallery: React.FC<GalleryProps> = ({ galleryAlbums }) => {
   const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const currentAlbum = selectedAlbum
     ? galleryAlbums.find((a) => a.id === selectedAlbum)
     : null;
-
+  console.log(galleryAlbums)
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
@@ -35,7 +41,7 @@ const Gallery = () => {
           {currentAlbum && (
             <div>
               <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-2">{currentAlbum.titleAr}</h2>
+                <h2 className="text-3xl font-bold mb-2">{currentAlbum.title}</h2>
                 <p className="text-muted-foreground flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
                   {new Date(currentAlbum.date).toLocaleDateString("ar-MA")}
@@ -46,12 +52,12 @@ const Gallery = () => {
                 {currentAlbum.images.map((image, index) => (
                   <button
                     key={index}
-                    onClick={() => setLightboxImage(image)}
+                    onClick={() => setLightboxImage(image.path)}
                     className="aspect-square overflow-hidden rounded-lg shadow-soft hover-lift group"
                   >
                     <img
-                      src={image}
-                      alt={`${currentAlbum.titleAr} ${index + 1}`}
+                      src={"/storage/" + image.path}
+                      alt={`${currentAlbum.title} ${index + 1}`}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </button>
@@ -72,12 +78,12 @@ const Gallery = () => {
               <div className="aspect-video overflow-hidden">
                 <img
                   src={album.coverImage}
-                  alt={album.titleAr}
+                  alt={album.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
               <CardContent className="px-4 py-2">
-                <h3 className="font-bold text-lg mb-2">{album.titleAr}</h3>
+                <h3 className="font-bold text-lg mb-2">{album.title}</h3>
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
@@ -94,15 +100,18 @@ const Gallery = () => {
       {/* Lightbox */}
       <Dialog open={!!lightboxImage} onOpenChange={() => setLightboxImage(null)}>
         <DialogContent className="max-w-7xl w-full p-0 bg-black/95 border-0">
+          <VisuallyHidden>
+            <DialogTitle>Image Viewer</DialogTitle>
+          </VisuallyHidden>
           <button
             onClick={() => setLightboxImage(null)}
             className="absolute top-4 right-4 z-50 text-white hover:bg-white/10 rounded-full p-2 transition-colors"
           >
-            <X className="w-6 h-6" />
+            {/* <X className="w-6 h-6" /> */}
           </button>
           {lightboxImage && (
             <img
-              src={lightboxImage}
+              src={"/storage/"+lightboxImage}
               alt="Full size"
               className="w-full h-auto max-h-[90vh] object-contain"
             />

@@ -22,6 +22,20 @@ class NewsResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    public static function getPluralModelLabel(): string
+    {
+        return __('resources.news.pluralModelLabel');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('resources.news.modelLabel');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('resources.news.navigationLabel');
+    }
     public static function form(Schema $schema): Schema
     {
         return NewsForm::configure($schema);

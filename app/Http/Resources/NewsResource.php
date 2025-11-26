@@ -23,7 +23,7 @@ class NewsResource extends JsonResource
             'categoryAr' => $this->category->name,
             'content' => $this->content,
             'excerpt' => $this->excerpt,
-            'coverImage' => $this->cover_image,
+            'coverImage' => "/storage/".$this->cover_image,
             'isPublished' => $this->is_published,
             'publishedAt' => $this->published_at,
             'createdAt' => $this->created_at,

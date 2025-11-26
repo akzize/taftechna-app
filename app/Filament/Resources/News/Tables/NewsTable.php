@@ -16,15 +16,17 @@ class NewsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')
+                ImageColumn::make('cover_image')
+                    ->label(__('resources.news.cover_image')),
+                TextColumn::make('title_ar')
+                    ->label(__('resources.news.title'))
                     ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                ImageColumn::make('cover_image'),
                 IconColumn::make('is_published')
+                    ->label(__('resources.news.is_published'))
                     ->boolean(),
                 TextColumn::make('published_at')
-                    ->dateTime()
+                    ->label(__('resources.news.published_at'))
+                    ->date()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()

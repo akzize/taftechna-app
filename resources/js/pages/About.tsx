@@ -7,22 +7,22 @@ const About = () => {
     {
       icon: BookOpen,
       title: "التعليم الجيد",
-      description: "نوفر تعليماً متميزاً يجمع بين المناهج الحديثة والقيم الأصيلة",
+      description: "نوفّر تعليماً متميزاً يجمع بين الحداثة والتجذر الثقافي، ونحرص على تطوير مهارات التفكير والإبداع لدى المتعلمين.",
     },
     {
       icon: Users,
       title: "المجتمع",
-      description: "نبني جسور التواصل بين المدرسة والأسرة والمجتمع المحلي",
+      description: "نعمل على تعزيز التواصل بين المدرسة والأسرة والمجتمع المحلي، لبناء محيط تربوي داعم ومتكامل.",
     },
     {
       icon: Target,
       title: "التميز",
-      description: "نسعى للتميز في جميع جوانب العملية التعليمية والتربوية",
+      description: "نسعى لتحقيق التميز في جميع جوانب العملية التعليمية والتربوية، ونشجع المبادرات الهادفة لتطوير الأداء.",
     },
     {
       icon: Award,
       title: "الإنجاز",
-      description: "نحتفي بإنجازات طلابنا ونشجعهم على التفوق والإبداع",
+      description: "نحتفي بإنجازات طلبتنا ونشجعهم باستمرار على الإبداع والتفوق الدراسي والشخصي.",
     },
   ];
 
@@ -54,12 +54,15 @@ const About = () => {
         <section className="mb-20">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">رؤيتنا ورسالتنا</h2>
+              <h2 className="text-3xl font-bold mb-4">من نحن</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                مدرسة تافتشنا هي منارة تعليمية في قلب القرية، تأسست على مبادئ التميز
-                الأكاديمي والقيم الثقافية الأصيلة. نسعى لتوفير بيئة تعليمية محفزة تنمي
-                مهارات الطلاب الفكرية والإبداعية والاجتماعية، وتعدهم لمواجهة تحديات
-                المستقبل بثقة وتفاؤل.
+                مدرسة تفتشنا هي مؤسسة تعليمية عمومية رائدة تقع بجماعة تفتشنا بإقليم زاكورة، تابعة للأكاديمية الجهوية للتربية والتكوين درعة–تافيلالت. تأسست سنة 1962 وافتتحت أبوابها سنة 1963، وتضم وحدتين دراسيتين: وحدة تبيديرت ووحدة تونا نعرابن.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                يبلغ عدد تلاميذ المؤسسة بجميع وحداتها 820 تلميذًا (427 ذكور و379 إناث)، ويشرف على تعليمهم وتربيتهم 28 أستاذًا (18 ذكور و10 إناث)، داخل 16 حجرة دراسية صالحة للاستعمال. توفر المؤسسة تعليماً ابتدائياً في بيئة محفزة وشاملة، وتحرص على ضمان الجودة وتكافؤ الفرص لجميع المتعلمين.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                انخرطت مدرسة تفتشنا في مشروع المدارس الرائدة منذ موسمه التجريبي الأول 2023/2024، وحققت نتائج ممتازة وفق التقويمات الوطنية والجهوية ولجنة التقويم التابعة للمجلس الأعلى للتربية والتكوين. وبفضل المقاربة التشاركية والمنهجية المنفتحة، نجحت المؤسسة في بناء علاقات تواصلية متميزة مع محيطها الاجتماعي.
               </p>
             </div>
 
@@ -67,23 +70,26 @@ const About = () => {
               <CardContent className="p-8">
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white mb-4">
-                      <Target className="w-6 h-6" />
+                    <div className="flex align-center items-center content-center gap-2 mb-3">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white mb-4">
+                        <Target className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-3">رؤيتنا</h3>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">رؤيتنا</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      أن نكون مدرسة رائدة في المنطقة، معروفة بتميزها الأكاديمي وقيمها
-                      الثقافية، تخرج أجيالاً واعية ومتعلمة تساهم في بناء مجتمع مزدهر.
+                      أن نكون مؤسسة تعليمية نموذجية في المنطقة، معروفة بتميزها الأكاديمي وقيمها الثقافية، وقادرة على تخريج أجيال واعية، مبدعة، ومسؤولة تساهم في بناء مجتمع مزدهر.
                     </p>
+
                   </div>
                   <div>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white mb-4">
-                      <BookOpen className="w-6 h-6" />
+                    <div className="flex align-center items-center content-center gap-2 mb-3">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white mb-4">
+                        <BookOpen className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-3">رسالتنا</h3>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">رسالتنا</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      تقديم تعليم عالي الجودة يجمع بين المناهج الحديثة والتراث الثقافي،
-                      في بيئة آمنة ومحفزة تنمي شخصية الطالب وتعده للنجاح في الحياة.
+                      أن نكون مؤسسة تعليمية نموذجية في المنطقة، معروفة بتميزها الأكاديمي وقيمها الثقافية، وقادرة على تخريج أجيال واعية، مبدعة، ومسؤولة تساهم في بناء مجتمع مزدهر.
                     </p>
                   </div>
                 </div>
@@ -117,7 +123,7 @@ const About = () => {
         </section>
 
         {/* Principal's Message */}
-        <section className="mb-20 bg-muted/30 rounded-2xl p-8 md:p-12">
+        {/* <section className="mb-20 bg-muted/30 rounded-2xl p-8 md:p-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-center">كلمة المدير</h2>
             <div className="prose prose-lg max-w-none text-center">
@@ -135,7 +141,7 @@ const About = () => {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Achievements */}
         <section>
