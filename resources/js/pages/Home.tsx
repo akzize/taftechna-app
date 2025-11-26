@@ -66,7 +66,7 @@ const Home: React.FC<HomeProps> = ({ latestNews, upcomingEvents, recentAlbum }) 
       <section className="container mx-auto px-4 -mt-16 relative z-30 mb-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { icon: Users, value: "800+", label: t("طالب وطالبة", "Élèves", "Students"), color: "from-primary to-primary/80" },
+            { icon: Users, value: "800+", label: t("تلميذ و تلميذة", "Élèves", "Students"), color: "from-primary to-primary/80" },
             { icon: BookOpen, value: "25+", label: t("معلم ومعلمة", "Enseignants", "Teachers"), color: "from-secondary to-secondary/80" },
             { icon: Award, value: "15+", label: t("جوائز وإنجازات", "Prix et réalisations", "Awards & Achievements"), color: "from-accent to-accent/80" },
             { icon: Calendar, value: "20+", label: t("أنشطة سنوية", "Événements annuels", "Annual Events"), color: "from-primary to-secondary" },

@@ -32,7 +32,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center align-center gap-2 font-bold text-xl text-primary">
             <img src={logo} alt="Taftechna School Logo" className="w-12 h-12 object-contain" />
-            <span className="hidden sm:inline">{t("تفتشنا", "Taftechna", "Taftechna")}</span>
+            <span className="hidden sm:inline">{t("مدارس تفتشنا", "Taftechna", "Taftechna")}</span>
           </Link>
 
           {/* Desktop Navigation */}

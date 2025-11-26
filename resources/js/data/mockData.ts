@@ -284,7 +284,7 @@ export const schoolInfo = {
     address: "مجموعة مدارس تفتشنا",
     addressEn: "Taftechna Village, Azilal Province, Morocco",
     phone: "+2126 61915495",
-    email: "contact@ss.taftechna.com",
+    email: "ss.taftechna@gmail.com",
     coordinates: {
         lat: 32.0,
         lng: -6.5

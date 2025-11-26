@@ -20,16 +20,10 @@ const Footer = () => {
             <p className="text-muted-foreground text-sm mb-4">{t(schoolInfo.slogan, "Construire l'avenir avec des racines authentiques", schoolInfo.sloganEn)}</p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/share/156ZkHJSR1/"
                 className="w-9 h-9 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground flex items-center justify-center transition-smooth"
               >
                 <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground flex items-center justify-center transition-smooth"
-              >
-                <Instagram className="w-4 h-4" />
               </a>
             </div>
           </div>
