@@ -73,8 +73,17 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-        <!-- ====================== STRUCTURED DATA (JSON-LD) ====================== -->
-        <script type="application/ld+json">
+        @viteReactRefresh
+        @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
+        @inertiaHead
+    </head>
+
+    <body class="font-sans">
+        @inertia
+    </body>
+
+    <!-- ====================== STRUCTURED DATA (JSON-LD) ====================== -->
+    {{-- <script type="application/ld+json">
         {
         "@context": "https://schema.org",
         "@type": "School",
@@ -96,14 +105,6 @@
             "https://instagram.com"
         ]
         }
-        </script>
-        @viteReactRefresh
-        @vite(['resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
-        @inertiaHead
-    </head>
-
-    <body class="font-sans">
-        @inertia
-    </body>
+        </script> --}}
 
 </html>
