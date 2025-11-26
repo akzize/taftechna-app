@@ -102,7 +102,7 @@ export const newsItems: NewsItem[] = [
         titleFr: "Réunion parents-enseignants prévue",
         date: "2024-11-20",
         category: "Events",
-        categoryAr: "فعاليات",
+        categoryAr: "أنشطة",
         categoryFr: "Événements",
         excerpt: "Join us for an important discussion about student progress and school updates.",
         excerptAr: "انضموا إلينا لمناقشة مهمة حول تقدم الطلاب وتحديثات المدرسة.",

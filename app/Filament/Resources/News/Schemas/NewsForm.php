@@ -33,6 +33,18 @@ class NewsForm
                     ->reactive()
                     ->unique(ignoreRecord: true)
                     ->required(),
+                Select::make('category_id')
+                    ->relationship('category', 'name')
+                ->createOptionForm([
+                    TextInput::make('name')
+                        ->reactive()
+                        ->required()
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            $slug = Str::slug($state);
+                            $set('slug', $slug);
+                        }),
+                    TextInput::make('slug'),
+                ]),
                 Textarea::make('excerpt'),
                 RichEditor::make('content')
                     ->required()
@@ -44,8 +56,7 @@ class NewsForm
                         ['undo', 'redo'],
                     ])
                     ->columnSpanFull(),
-                Select::make('category_id')
-                ->relationship('category', 'name'),
+
                 FileUpload::make('cover_image')
                     ->image()
                     ->disk('public')

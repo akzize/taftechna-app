@@ -39,7 +39,7 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
       <Link href="/events" className="inline-block mb-6">
         <Button variant="ghost" className="gap-2">
           <ArrowRight className="w-4 h-4" />
-          العودة للفعاليات
+          العودة للأنشطة
         </Button>
       </Link>
 
@@ -152,7 +152,7 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
           {/* Related Events */}
           {/* {relatedEvents.length > 0 && (
             <div>
-              <h3 className="text-xl font-semibold mb-4">فعاليات مشابهة</h3>
+              <h3 className="text-xl font-semibold mb-4">أنشطة مشابهة</h3>
               <div className="space-y-4">
                 {relatedEvents.map((relatedItem) => (
                   <Link key={relatedItem.id} href={`/events/${relatedItem.id}`}>

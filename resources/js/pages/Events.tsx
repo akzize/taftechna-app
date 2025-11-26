@@ -26,9 +26,9 @@ const Events: React.FC<EventsProps> = ({ events}) => {
     <div className="container mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">فعاليات المدرسة</h1>
+        <h1 className="text-4xl font-bold mb-2">أنشطة المدرسة</h1>
         <p className="text-muted-foreground text-lg">
-          تابع وشارك في فعالياتنا وأنشطتنا المدرسية
+          تابع وشارك في أنشطةنا وأنشطتنا المدرسية
         </p>
       </div>
 
@@ -64,7 +64,7 @@ const Events: React.FC<EventsProps> = ({ events}) => {
         </div>
       ) : (
         <div className="text-center py-20">
-          <p className="text-muted-foreground text-lg">لا توجد فعاليات مطابقة</p>
+          <p className="text-muted-foreground text-lg">لا توجد أنشطة مطابقة</p>
         </div>
       )}
     </div>
