@@ -2,6 +2,7 @@ import { Link } from "@inertiajs/react";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { schoolInfo } from "@/data/mockData";
 import { useLanguage } from "@/contexts/LanguageContext";
+import logo from "@/assets/taftechna-logo-removebg.png";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -13,9 +14,7 @@ const Footer = () => {
           {/* School Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white shadow-soft">
-                ت
-              </div>
+              <img src={logo} alt="Taftechna School Logo" className="w-12 h-12 object-contain" />
               <h3 className="font-bold text-lg">{t(schoolInfo.name, "École Taftechna", schoolInfo.nameEn)}</h3>
             </div>
             <p className="text-muted-foreground text-sm mb-4">{t(schoolInfo.slogan, "Construire l'avenir avec des racines authentiques", schoolInfo.sloganEn)}</p>
