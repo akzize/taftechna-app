@@ -48,7 +48,7 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-2">الهاتف</h3>
                   <a
-                    href={`tel:${schoolInfo.phone}`}
+                    href={`tel:${schoolInfo.phone}`} dir="ltr"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {schoolInfo.phone}
@@ -78,10 +78,9 @@ const Contact = () => {
           </Card>
 
           {/* Map */}
-          <Card className="shadow-soft overflow-hidden">
+          <Card className="shadow-soft py-0 overflow-hidden">
             <div className="aspect-video bg-muted">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106438.81099158225!2d-6.5!3d32.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDAwJzAwLjAiTiA2wrAzMCcwMC4wIlc!5e0!3m2!1sen!2sma!4v1234567890"
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2862.6055174516705!2d-5.954627408662571!3d30.68440254996009!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdbc592be9de2309%3A0x995ede14a3777570!2z2YXYrNmF2YjYudipINmF2K_Yp9ix2LMg2KrZgdiq2LTZhtin!5e1!3m2!1sen!2sma!4v1764161931364!5m2!1sen!2sma"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

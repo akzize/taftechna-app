@@ -275,16 +275,16 @@ export const galleryAlbums: GalleryAlbum[] = [
 ];
 
 export const schoolInfo = {
-    name: "مدرسة تافتشنا",
+    name: "مجموعة مدارس تفتشنا",
     nameEn: "Taftechna School",
     slogan: "نبني المستقبل بجذور أصيلة",
     sloganEn: "Building the Future with Authentic Roots",
     mission: "تقديم تعليم عالي الجودة يجمع بين الحداثة والتراث الثقافي",
     missionEn: "Providing quality education that bridges modernity and cultural heritage",
-    address: "قرية تافتشنا، المغرب",
+    address: "مجموعة مدارس تفتشنا",
     addressEn: "Taftechna Village, Azilal Province, Morocco",
-    phone: "+212 523-123456",
-    email: "contact@taftechna.school.ma",
+    phone: "+2126 61915495",
+    email: "contact@ss.taftechna.com",
     coordinates: {
         lat: 32.0,
         lng: -6.5
