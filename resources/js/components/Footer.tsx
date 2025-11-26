@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                <a href={`tel:${schoolInfo.phone}`} className="hover:text-primary transition-smooth">
+                <a href={`tel:${schoolInfo.phone}`} dir="ltr" className="hover:text-primary transition-smooth">
                   {schoolInfo.phone}
                 </a>
               </li>
