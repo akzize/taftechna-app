@@ -19,6 +19,7 @@ class AlbumForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label(__('resources.album.title'))
                     ->reactive()
                     ->live()
                     ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
@@ -29,9 +30,12 @@ class AlbumForm
                 TextInput::make('slug')
                     ->required(),
                 Textarea::make('description')
-                    ->columnSpanFull(),
+                ->label(__('resources.album.description'))
+                ->columnSpanFull(),
                 FileUpload::make('cover_image')
-                    ->image()
+                ->label(__('resources.album.cover_image'))
+
+                ->image()
                     ->disk('public')
                     ->directory('album/images')
                     ->required(),
@@ -40,7 +44,7 @@ class AlbumForm
                 //     ->directory('album/images')
                 //     ->disk('public'),
                 Repeater::make('images')
-                    ->label('Album Images')
+                ->label(__('resources.album.album_images'))
                     ->schema([
                         FileUpload::make('path')
                             ->disk('public')
@@ -57,13 +61,16 @@ class AlbumForm
                         //     ->maxLength(255),
                     ])
                     ->grid(3)
-                    ->addActionLabel('Add Image')
+                    ->addActionLabel(__('resources.album.add_image'))
                     ->collapsible()
                     ->columnSpanFull(),
                 DatePicker::make('date')
-                    ->required(),
+                ->label(__('resources.album.date'))
+
+                ->required(),
                 DateTimePicker::make('published_at')
-                    ->default(today())
+                ->label(__('resources.album.published_at'))
+                ->default(today())
                     ->required(),
             ]);
     }

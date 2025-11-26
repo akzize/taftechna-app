@@ -16,20 +16,25 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('slug')
+                ImageColumn::make('cover_image')
+                    ->label(__('resources.event.cover_image')),
+                TextColumn::make('title_ar')
+                    ->label(__('resources.event.title'))
                     ->searchable(),
                 TextColumn::make('start_date')
+                    ->label(__('resources.event.start_date'))
                     ->date()
                     ->sortable(),
                 TextColumn::make('end_date')
+                    ->label(__('resources.event.end_date'))
                     ->date()
                     ->sortable(),
                 TextColumn::make('location')
+                    ->label(__('resources.event.location'))
+                    ->default("--------")
                     ->searchable(),
-                ImageColumn::make('cover_image'),
                 IconColumn::make('is_published')
+                    ->label(__('resources.event.is_published'))
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()

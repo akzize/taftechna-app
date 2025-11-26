@@ -15,16 +15,19 @@ class AlbumsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('cover_image')
+                    ->label(__('resources.album.cover_image')),
                 TextColumn::make('title')
+                    ->label(__('resources.album.title'))
                     ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                ImageColumn::make('cover_image'),
                 TextColumn::make('date')
+                    ->label(__('resources.album.date'))
                     ->date()
                     ->sortable(),
                 TextColumn::make('published_at')
-                    ->dateTime()
+                    ->label(__('resources.album.published_at'))
+                    ->date()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
