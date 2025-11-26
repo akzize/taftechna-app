@@ -10,6 +10,6 @@ class News extends Model
 
     public function category()
     {
-        return $this->belongsTo(EventCategory::class);
+        return $this->belongsTo(NewsCategory::class);
     }
 }
