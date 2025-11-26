@@ -1,19 +1,26 @@
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import { Calendar, Tag, ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import NewsCard from "@/components/NewsCard";
 import { newsItems } from "@/data/mockData";
 import { toast } from "sonner";
+import DOMPurify from 'dompurify';
+import { NewsItem } from "@/types";
 
-const NewsDetail = ({ articleId, article }) => {
-  const { id } = articleId;
-  const news = article;
+interface NewsProps {
+  news: NewsItem; // Assuming NewsItem is a defined type/interface
+}
+
+const NewsDetail: React.FC<NewsProps> = ({ news }) => {
+  const { id } = news.id;
 
   if (!news) {
-    return <Navigate to="/news" replace />;
+    router.replace("/news");
+    return null; // Stop rendering the rest of the component
   }
+
+  const cleanHtml = DOMPurify.sanitize(news.content);
 
   const relatedNews = newsItems
     .filter((n) => n.id !== id && n.categoryAr === news.categoryAr)
@@ -42,11 +49,11 @@ const NewsDetail = ({ articleId, article }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2">
-          <Card className="overflow-hidden shadow-elevated">
+          <Card className="py-0 overflow-hidden shadow-elevated rounded-lg border bg-card text-card-foreground shadow-sm">
             {/* Featured Image */}
-            <div className="aspect-video overflow-hidden">
+            <div className="aspect-video overflow-hidden ">
               <img
-                src={news.image}
+                src={"/storage/" + news.coverImage}
                 alt={news.titleAr}
                 className="w-full h-full object-cover"
               />
@@ -61,7 +68,7 @@ const NewsDetail = ({ articleId, article }) => {
                 </Badge>
                 <span className="text-sm text-muted-foreground flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  {new Date(news.date).toLocaleDateString("ar-MA", {
+                  {new Date(news.publishedAt).toLocaleDateString("ar-MA", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
@@ -84,11 +91,7 @@ const NewsDetail = ({ articleId, article }) => {
               {/* Content - Blog Style */}
               <div className="prose prose-lg max-w-none">
                 {/* Split content into paragraphs */}
-                {news.contentAr.split('\n\n').map((paragraph, index) => (
-                  <p key={index} className="text-lg leading-relaxed text-foreground mb-6">
-                    {paragraph}
-                  </p>
-                ))}
+                <div dangerouslySetInnerHTML={{ __html: cleanHtml }}/>
               </div>
 
               {/* Images embedded in content - Blog Style */}
@@ -104,7 +107,7 @@ const NewsDetail = ({ articleId, article }) => {
                         />
                       </div>
                       <p className="text-sm text-muted-foreground text-center italic">
-                        صورة {index + 2} من {news.images.length}
+                        صورة {index + 2} من {news.images?.length}
                       </p>
                     </div>
                   ))}
@@ -129,7 +132,7 @@ const NewsDetail = ({ articleId, article }) => {
               <h3 className="text-xl font-semibold mb-4">أخبار ذات صلة</h3>
               <div className="space-y-4">
                 {relatedNews.map((relatedItem) => (
-                  <Link key={relatedItem.id} to={`/news/${relatedItem.id}`}>
+                  <Link key={relatedItem.id} href={`/news/${relatedItem.id}`}>
                     <Card className="hover-lift overflow-hidden">
                       <div className="flex gap-4 p-4">
                         <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">

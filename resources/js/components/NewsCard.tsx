@@ -18,15 +18,15 @@ const NewsCard = ({ news }: NewsCardProps) => {
   const category = language === "fr" ? news.categoryFr : language === "en" ? news.category : news.categoryAr;
   
   return (
-    <Card className="overflow-hidden hover-lift">
+    <Card className="py-0 overflow-hidden hover-lift">
       <div className="aspect-video overflow-hidden">
         <img
-          src={news.image}
+          src={"storage/" + news.coverImage}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
-      <CardContent className="p-4">
+      <CardContent className="px-4 py-2">
         <div className="flex items-center gap-2 mb-2">
           <Badge variant="secondary" className="gap-1">
             <Tag className="w-3 h-3" />
@@ -34,7 +34,7 @@ const NewsCard = ({ news }: NewsCardProps) => {
           </Badge>
           <span className="text-xs text-muted-foreground flex items-center gap-1">
             <Calendar className="w-3 h-3" />
-            {new Date(news.date).toLocaleDateString(language === "ar" ? "ar-MA" : language === "fr" ? "fr-FR" : "en-US")}
+            {new Date(news.publishedAt).toLocaleDateString(language === "ar" ? "ar-MA" : language === "fr" ? "fr-FR" : "en-US")}
           </span>
         </div>
         <h3 className="font-bold text-lg mb-2 line-clamp-2">{title}</h3>

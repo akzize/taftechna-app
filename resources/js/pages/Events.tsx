@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import EventCard from "@/components/EventCard";
-import { events } from "@/data/mockData";
+import { EventItem } from "@/types";
 
-const Events = () => {
+interface EventsProps {
+  events: EventItem[]; // Assuming EventItem is a defined type/interface
+}
+const Events: React.FC<EventsProps> = ({ events}) => {
   const [selectedCategory, setSelectedCategory] = useState("الكل");
 
+  console.log(events)
   const categories = ["الكل", ...Array.from(new Set(events.map((e) => e.categoryAr)))];
 
   const filteredEvents = events.filter((event) => {
@@ -52,9 +56,9 @@ const Events = () => {
       </div>
 
       {/* Events Grid */}
-      {sortedEvents.length > 0 ? (
+      {events.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedEvents.map((event) => (
+          {events.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
         </div>

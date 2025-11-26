@@ -66,7 +66,7 @@ const Gallery = () => {
           {galleryAlbums.map((album) => (
             <Card
               key={album.id}
-              className="overflow-hidden hover-lift cursor-pointer group"
+              className="overflow-hidden hover-lift cursor-pointer group py-0"
               onClick={() => setSelectedAlbum(album.id)}
             >
               <div className="aspect-video overflow-hidden">
@@ -76,7 +76,7 @@ const Gallery = () => {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
-              <CardContent className="p-4">
+              <CardContent className="px-4 py-2">
                 <h3 className="font-bold text-lg mb-2">{album.titleAr}</h3>
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">

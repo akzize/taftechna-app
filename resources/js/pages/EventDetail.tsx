@@ -1,22 +1,27 @@
-import { useParams, Link, Navigate } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import { Calendar, Clock, MapPin, Tag, ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import EventCard from "@/components/EventCard";
-import { events } from "@/data/mockData";
+// import { events } from "@/data/mockData";
 import { toast } from "sonner";
+import { EventItem } from "@/types";
 
-const EventDetail = ({ eventId, event }) => {
-  const { id } = eventId;
+interface EventProps {
+  event: EventItem; // Assuming EventItem is a defined type/interface
+}
+
+const EventDetail: React.FC<EventProps> = ({ event }) => {
+  const { id } = event.id;
 
   if (!event) {
-    return <Navigate to="/events" replace />;
+    router.replace("/events");
+    return null
   }
 
-  const relatedEvents = events
-    .filter((e) => e.id !== id && e.categoryAr === event.categoryAr)
-    .slice(0, 3);
+  // const relatedEvents = events
+  //   .filter((e) => e.id !== id && e.categoryAr === event.categoryAr)
+  //   .slice(0, 3);
 
   const handleShare = () => {
     const url = window.location.href;
@@ -41,11 +46,11 @@ const EventDetail = ({ eventId, event }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Content */}
         <div className="lg:col-span-2">
-          <Card className="overflow-hidden shadow-elevated">
+          <Card className="overflow-hidden py-0 shadow-elevated">
             {/* Featured Image */}
             <div className="aspect-video overflow-hidden">
               <img
-                src={event.image}
+                src={'/storage/' + event.coverImage}
                 alt={event.titleAr}
                 className="w-full h-full object-cover"
               />
@@ -74,20 +79,22 @@ const EventDetail = ({ eventId, event }) => {
 
               {/* Event Details */}
               <div className="bg-muted/50 rounded-lg p-6 mb-8 space-y-3">
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-semibold">التاريخ</div>
-                    <div className="text-muted-foreground">
-                      {new Date(event.date).toLocaleDateString("ar-MA", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                        weekday: "long",
-                      })}
-                    </div>
+                {event.date &&
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-primary" />
+                    (<div>
+                      <div className="font-semibold">التاريخ</div>
+                      <div className="text-muted-foreground">
+                        {new Date(event.date).toLocaleDateString("ar-MA", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                          weekday: "long",
+                        })}
+                      </div>
+                    </div>)
                   </div>
-                </div>
+                }
                 {event.time && (
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-primary" />
@@ -112,7 +119,7 @@ const EventDetail = ({ eventId, event }) => {
               <div className="prose prose-lg max-w-none">
                 <h3 className="text-xl font-semibold mb-4">عن الفعالية</h3>
                 <p className="text-lg leading-relaxed text-foreground">
-                  {event.descriptionAr}
+                  {event.content}
                 </p>
               </div>
 
@@ -143,7 +150,7 @@ const EventDetail = ({ eventId, event }) => {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Related Events */}
-          {relatedEvents.length > 0 && (
+          {/* {relatedEvents.length > 0 && (
             <div>
               <h3 className="text-xl font-semibold mb-4">فعاليات مشابهة</h3>
               <div className="space-y-4">
@@ -173,7 +180,7 @@ const EventDetail = ({ eventId, event }) => {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
