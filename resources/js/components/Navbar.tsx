@@ -47,7 +47,7 @@ const Navbar = () => {
             ))}
             
             {/* Language Switcher */}
-            <DropdownMenu>
+            {/* <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Globe className="w-5 h-5" />
@@ -64,7 +64,7 @@ const Navbar = () => {
                   English
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
           </div>
 
           {/* Mobile Menu Button */}
