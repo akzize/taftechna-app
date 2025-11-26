@@ -25,7 +25,7 @@ class HomeController extends Controller
         return Inertia::render('Home', [
             "latestNews" => NewsResource::collection($latestNews),
             "upcomingEvents" => EventResource::collection($upcomingEvents),
-            "recentAlbum" => new AlbumResource($recentAlbum),
+            "recentAlbum" => $recentAlbum ? new AlbumResource($recentAlbum) : [],
         ]);
     }
 
