@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Link } from '@inertiajs/react';
-import { Menu, X, Home, Newspaper, Calendar, ImageIcon, Info, Phone, Globe } from "lucide-react";
+import { Menu, X, Home, Newspaper, Calendar, ImageIcon, Info, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logo from "@/assets/taftechna-logo-removebg.png";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,24 +42,7 @@ const Navbar = () => {
             ))}
             
             {/* Language Switcher */}
-            {/* <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Globe className="w-5 h-5" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("ar")} className={language === "ar" ? "bg-accent" : ""}>
-                  العربية
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("fr")} className={language === "fr" ? "bg-accent" : ""}>
-                  Français
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-accent" : ""}>
-                  English
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
+            
           </div>
 
           {/* Mobile Menu Button */}
@@ -96,44 +74,6 @@ const Navbar = () => {
                 </Button>
               </Link>
             ))}
-            <div className="border-t border-border mt-2 pt-2 px-2">
-              <p className="text-sm text-muted-foreground mb-2">{t("اللغة", "Langue", "Language")}</p>
-              <div className="flex gap-2">
-                <Button
-                  variant={language === "ar" ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => {
-                    setLanguage("ar");
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex-1"
-                >
-                  العربية
-                </Button>
-                <Button
-                  variant={language === "fr" ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => {
-                    setLanguage("fr");
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex-1"
-                >
-                  FR
-                </Button>
-                <Button
-                  variant={language === "en" ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => {
-                    setLanguage("en");
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex-1"
-                >
-                  EN
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
