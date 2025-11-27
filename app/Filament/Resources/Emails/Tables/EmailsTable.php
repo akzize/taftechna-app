@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Emails\Tables;
 
 use App\Models\Email;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -40,11 +41,14 @@ class EmailsTable
             ])
             ->recordActions([
                 ViewAction::make()
-                ->label('')
-                ->iconSize('md')
-                ->modalSubmitAction(false) // Hide the 'Save' or 'Submit' button (since it's view-only)
-                ->modalWidth('lg')
-                ->modalCancelActionLabel('Close'), // Change the cancel button text,
+                    ->label('')
+                    ->iconSize('md')
+                    ->modalSubmitAction(false) // Hide the 'Save' or 'Submit' button (since it's view-only)
+                    ->modalWidth('lg')
+                    ->modalCancelActionLabel('Close'), // Change the cancel button text,
+                DeleteAction::make()
+                    ->label('')
+                    ->iconSize('md')
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
