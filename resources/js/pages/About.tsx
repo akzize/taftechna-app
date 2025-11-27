@@ -17,7 +17,7 @@ const About = () => {
     {
       icon: Target,
       title: "التميز",
-      description: "نسعى لتحقيق التميز في جميع جوانب العملية التعليمية والتربوية، ونشجع المبادرات الهادفة لتطوير الأداء.",
+      description: "نسعى لتحقيق التميز في جميع الجوانب التعليمية والتربوية، ونشجع المبادرات الهادفة لتطوير الأداء.",
     },
     {
       icon: Award,
@@ -40,11 +40,11 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-secondary/90 z-10" />
         <img
           src={aboutSchoolImage}
-          alt="عن مدرسة تافتشنا"
+          alt="عن مدارس تافتشنا"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="relative z-20 text-center text-white px-4">
-          <h1 className="text-5xl font-bold mb-4">عن مدرسة تافتشنا</h1>
+          <h1 className="text-5xl font-bold mb-4">عن مدارس تافتشنا</h1>
           <p className="text-xl">نبني المستقبل بجذور أصيلة</p>
         </div>
       </section>
