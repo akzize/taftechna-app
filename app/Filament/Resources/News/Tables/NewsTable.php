@@ -17,12 +17,15 @@ class NewsTable
         return $table
             ->columns([
                 ImageColumn::make('cover_image')
-                    ->label(__('resources.news.cover_image')),
+                    ->label(__('resources.news.cover_image'))
+                    ->disk('public') // Specify the disk where the image lives (required for ImageColumn)
+                    ->circular(),
                 TextColumn::make('title_ar')
                     ->label(__('resources.news.title'))
                     ->searchable(),
                 IconColumn::make('is_published')
                     ->label(__('resources.news.is_published'))
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->boolean(),
                 TextColumn::make('published_at')
                     ->label(__('resources.news.published_at'))

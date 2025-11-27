@@ -17,7 +17,9 @@ class EventsTable
         return $table
             ->columns([
                 ImageColumn::make('cover_image')
-                    ->label(__('resources.event.cover_image')),
+                    ->label(__('resources.event.cover_image'))
+                    ->disk('public') // Specify the disk where the image lives (required for ImageColumn)
+                    ->circular(),
                 TextColumn::make('title_ar')
                     ->label(__('resources.event.title'))
                     ->searchable(),
@@ -35,6 +37,7 @@ class EventsTable
                     ->searchable(),
                 IconColumn::make('is_published')
                     ->label(__('resources.event.is_published'))
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()
