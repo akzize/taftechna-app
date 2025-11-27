@@ -52,4 +52,19 @@ return [
         'published_at' => 'تاريخ النشر',
         'add_image' => 'اضافة صورة'
     ],
+    'email' => [
+        'label' => 'سجل البريد الإلكتروني',
+        'modelLabel' => 'البريد الإلكتروني',
+        'navigationLabel' => 'البريد الإلكتروني',
+        'pluralModelLabel' => 'سجلات البريد الإلكتروني',
+        'from' => 'من',
+        'sender' => 'المرسل',
+        'phone' => 'الهاتف',
+        'to' => 'إلى',
+        'subject' => 'الموضوع',
+        'attachments' => 'المرفقات',
+        'content' => 'المحتوى',
+        'created_at' => 'تاريخ الإنشاء',
+        'sent_at' => 'تاريخ الإرسال',
+    ]
 ];
