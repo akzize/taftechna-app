@@ -46,7 +46,7 @@ class EventForm
                     ->required()
                     ->columnSpanFull(),
                 DatePicker::make('start_date')
-                ->label(__('resources.event.Start_date'))
+                ->label(__('resources.event.start_date'))
                     ->required(),
                 DatePicker::make('end_date')
                 ->label(__('resources.event.end_date'))
