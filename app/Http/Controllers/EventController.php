@@ -16,11 +16,14 @@ class EventController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $event = Event::find($id);
+        $event = Event::where('slug', $slug)->firstOrFail();
+        $relatedEvents = Event::where('category_id', $event->category->id)->where('id', '<>', $event->id)->latest()->limit(4)->get();
         return Inertia::render('EventDetail', [
-            'event' => new EventResource($event)
+            'event' => new EventResource($event),
+            'relatedEvents' => EventResource::collection($relatedEvents)
+
         ]);
     }
 }

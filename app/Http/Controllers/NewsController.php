@@ -17,11 +17,14 @@ class NewsController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $event = News::find($id);
+        $event = News::where('slug', $slug)->firstOrFail();
+        $relatedNews = News::where('category_id', $event->category->id)->where('id', '<>', $event->id)->latest()->limit(4)->get();
         return Inertia::render('NewsDetail', [
-            'news' => new NewsResource($event)
+            'news' => new NewsResource($event),
+            'relatedNews' => NewsResource::collection($relatedNews)
+
         ]);
     }
 }
