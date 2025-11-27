@@ -50,7 +50,7 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
             {/* Featured Image */}
             <div className="aspect-video overflow-hidden">
               <img
-                src={'/storage/' + event.coverImage}
+                src={event.coverImage}
                 alt={event.titleAr}
                 className="w-full h-full object-cover"
               />
