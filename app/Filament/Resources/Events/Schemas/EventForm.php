@@ -18,7 +18,7 @@ class EventForm
         return $schema
             ->components([
                 TextInput::make('title_ar')
-                ->label(__('resources.event.title'))
+                    ->label(__('resources.event.title'))
                     ->reactive()
                     ->live()
                     ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
@@ -27,40 +27,43 @@ class EventForm
                     })
                     ->required(),
                 TextInput::make('slug')
+                    ->reactive()
+                    ->hidden()
                     ->required(),
                 Select::make('category_id')
-                ->label(__('resources.event.category'))
+                    ->label(__('resources.event.category'))
+                    ->required()
                     ->relationship('category', 'name')
                     ->createOptionForm([
                         TextInput::make('name')
-                        ->reactive()
-                        ->required()
-                        ->afterStateUpdated(function($state, callable $set){
-                            $slug = Str::slug($state);
-                            $set('slug', $slug);
-                        }),
+                            ->reactive()
+                            ->required()
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                $slug = Str::slug($state);
+                                $set('slug', $slug);
+                            }),
                         TextInput::make('slug'),
                     ]),
                 Textarea::make('content')
-                ->label(__('resources.event.content'))
+                    ->label(__('resources.event.content'))
                     ->required()
                     ->columnSpanFull(),
                 DatePicker::make('start_date')
-                ->label(__('resources.event.start_date'))
+                    ->label(__('resources.event.start_date'))
                     ->required(),
                 DatePicker::make('end_date')
-                ->label(__('resources.event.end_date'))
+                    ->label(__('resources.event.end_date'))
                     ->required(),
                 TextInput::make('location')
-                ->label(__('resources.event.location')),
+                    ->label(__('resources.event.location')),
                 FileUpload::make('cover_image')
-                ->label(__('resources.event.cover_image'))
+                    ->label(__('resources.event.cover_image'))
                     ->image()
                     ->disk('public')
                     ->directory('events/images')
                     ->required(),
                 Toggle::make('is_published')
-                ->label(__('resources.event.is_published'))
+                    ->label(__('resources.event.is_published'))
                     ->required(),
             ]);
     }

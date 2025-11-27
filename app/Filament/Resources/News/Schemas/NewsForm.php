@@ -32,7 +32,7 @@ class NewsForm
                     ->required(),
                 TextInput::make('slug')
                     ->reactive()
-                    ->unique(ignoreRecord: true)
+                    ->hidden()
                     ->required(),
                 Select::make('category_id')
                     ->label(__('resources.news.category'))
