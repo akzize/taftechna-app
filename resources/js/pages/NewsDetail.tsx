@@ -1,31 +1,21 @@
-import { Link, router } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import { Calendar, Tag, ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { newsItems } from "@/data/mockData";
 import { toast } from "sonner";
 import DOMPurify from 'dompurify';
 import { NewsItem } from "@/types";
 
 interface NewsProps {
   news: NewsItem; // Assuming NewsItem is a defined type/interface
+  relatedNews: NewsItem[];
 }
 
-const NewsDetail: React.FC<NewsProps> = ({ news }) => {
-  const { id } = news.id;
-
-  if (!news) {
-    router.replace("/news");
-    return null; // Stop rendering the rest of the component
-  }
-
+const NewsDetail: React.FC<NewsProps> = ({ news, relatedNews }) => {
   const cleanHtml = DOMPurify.sanitize(news.content);
 
-  const relatedNews = newsItems
-    .filter((n) => n.id !== id && n.categoryAr === news.categoryAr)
-    .slice(0, 3);
-
+  console.log(relatedNews)
   const handleShare = () => {
     const url = window.location.href;
     if (navigator.share) {
@@ -91,7 +81,7 @@ const NewsDetail: React.FC<NewsProps> = ({ news }) => {
               {/* Content - Blog Style */}
               <div className="prose prose-lg max-w-none">
                 {/* Split content into paragraphs */}
-                <div dangerouslySetInnerHTML={{ __html: cleanHtml }}/>
+                <div dangerouslySetInnerHTML={{ __html: cleanHtml }} />
               </div>
 
               {/* Images embedded in content - Blog Style */}
@@ -132,12 +122,12 @@ const NewsDetail: React.FC<NewsProps> = ({ news }) => {
               <h3 className="text-xl font-semibold mb-4">أخبار ذات صلة</h3>
               <div className="space-y-4">
                 {relatedNews.map((relatedItem) => (
-                  <Link key={relatedItem.id} href={`/news/${relatedItem.id}`}>
+                  <Link key={relatedItem.id} href={`/news/${relatedItem.slug}`}>
                     <Card className="hover-lift overflow-hidden">
                       <div className="flex gap-4 p-4">
                         <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                           <img
-                            src={relatedItem.image}
+                            src={relatedItem.coverImage}
                             alt={relatedItem.titleAr}
                             className="w-full h-full object-cover"
                           />
@@ -146,9 +136,12 @@ const NewsDetail: React.FC<NewsProps> = ({ news }) => {
                           <h4 className="font-semibold text-sm mb-2 line-clamp-2">
                             {relatedItem.titleAr}
                           </h4>
-                          <span className="text-xs text-muted-foreground">
-                            {new Date(relatedItem.date).toLocaleDateString("ar-MA")}
-                          </span>
+                          {relatedItem.date || relatedItem.publishedAt &&
+                            <span className="text-xs text-muted-foreground flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {new Date(relatedItem.date ?? relatedItem.publishedAt).toLocaleDateString("ar-MA")}
+                            </span>
+                          }
                         </div>
                       </div>
                     </Card>

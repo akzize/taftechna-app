@@ -58,7 +58,7 @@ const EventCard = ({ event }: EventCardProps) => {
         <p className="text-muted-foreground text-sm line-clamp-2">{content}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Link href={`/events/${event.id}`} className="w-full">
+        <Link href={`/events/${event.slug}`} className="w-full">
           <Button variant="outline" className="w-full">
             {t("المزيد من التفاصيل", "Plus de détails", "More details")}
           </Button>

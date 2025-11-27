@@ -41,7 +41,7 @@ const NewsCard = ({ news }: NewsCardProps) => {
         <p className="text-muted-foreground text-sm line-clamp-3">{excerpt}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Link href={`/news/${news.id}`} className="w-full">
+        <Link href={`/news/${news.slug}`} className="w-full">
           <Button variant="outline" className="w-full">
             {t("اقرأ المزيد", "Lire la suite", "Read more")}
           </Button>

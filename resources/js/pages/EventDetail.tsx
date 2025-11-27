@@ -8,10 +8,11 @@ import { toast } from "sonner";
 import { EventItem } from "@/types";
 
 interface EventProps {
-  event: EventItem; // Assuming EventItem is a defined type/interface
+  event: EventItem; 
+  relatedEvents: EventItem[]; 
 }
 
-const EventDetail: React.FC<EventProps> = ({ event }) => {
+const EventDetail: React.FC<EventProps> = ({ event, relatedEvents }) => {
   const { id } = event.id;
 
   if (!event) {
@@ -150,17 +151,17 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Related Events */}
-          {/* {relatedEvents.length > 0 && (
+          {relatedEvents.length > 0 && (
             <div>
               <h3 className="text-xl font-semibold mb-4">أنشطة مشابهة</h3>
               <div className="space-y-4">
                 {relatedEvents.map((relatedItem) => (
-                  <Link key={relatedItem.id} href={`/events/${relatedItem.id}`}>
+                  <Link key={relatedItem.id} href={`/events/${relatedItem.slug}`}>
                     <Card className="hover-lift overflow-hidden">
                       <div className="flex gap-4 p-4">
                         <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-lg">
                           <img
-                            src={relatedItem.image}
+                            src={relatedItem.coverImage}
                             alt={relatedItem.titleAr}
                             className="w-full h-full object-cover"
                           />
@@ -169,10 +170,12 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
                           <h4 className="font-semibold text-sm mb-2 line-clamp-2">
                             {relatedItem.titleAr}
                           </h4>
+                          {relatedItem.date || relatedItem.startDate && 
                           <span className="text-xs text-muted-foreground flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
-                            {new Date(relatedItem.date).toLocaleDateString("ar-MA")}
+                              {new Date(relatedItem.date ?? relatedItem.startDate).toLocaleDateString("ar-MA")}
                           </span>
+                          }
                         </div>
                       </div>
                     </Card>
@@ -180,7 +183,7 @@ const EventDetail: React.FC<EventProps> = ({ event }) => {
                 ))}
               </div>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </div>
