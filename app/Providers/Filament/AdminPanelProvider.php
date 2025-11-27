@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use DiogoGPinto\AuthUIEnhancer\AuthUIEnhancerPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,7 +32,8 @@ class AdminPanelProvider extends PanelProvider
             // ->registration()
             ->spa()
             ->colors([
-                'primary', 'secondary'
+                'primary',
+                'secondary'
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -57,6 +59,14 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(\RickDBCN\FilamentEmail\FilamentEmail::make());
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->plugin(\RickDBCN\FilamentEmail\FilamentEmail::make())
+            ->plugins([
+                AuthUIEnhancerPlugin::make()
+                ->showEmptyPanelOnMobile(false)
+                ->formPanelPosition('left')
+                ->formPanelWidth('40%')
+                ->emptyPanelBackgroundImageUrl('/images/loginpage-screen-v23.png')
+        ]);
     }
 }
