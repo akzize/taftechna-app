@@ -12,12 +12,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>("ar");
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang) setLanguage(savedLang);
-  }, []);
+  const [language, setLanguage] = useState<Language>(() => {
+    // This function runs only once on initial component creation
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem("language") as Language;
+      // Ensure savedLang is one of the valid Language types or default to "ar"
+      if (savedLang && ["ar", "fr", "en"].includes(savedLang)) {
+        return savedLang;
+      }
+    }
+    return "ar"; // Default value for initial state
+  });
 
   useEffect(() => {
     localStorage.setItem("language", language);

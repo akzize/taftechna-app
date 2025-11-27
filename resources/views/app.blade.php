@@ -36,6 +36,7 @@
 
         <!-- Language tags -->
         <meta http-equiv="Content-Language" content="ar, fr, en" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="og:locale" content="ar_AR" />
         <meta name="og:locale:alternate" content="fr_FR" />
         <meta name="og:locale:alternate" content="en_US" />
