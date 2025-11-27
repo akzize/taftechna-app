@@ -33,7 +33,7 @@ return [
         'content' => 'وصف النشاط',
         'start_date' => 'تاريخ البدء',
         'end_date' => 'تاريخ الانتهاء',
-        'location' => 'الموقع',
+        'location' => 'المكان',
         'cover_image' => 'صورة الغلاف',
         'is_published' => 'تم النشر'
     ],
