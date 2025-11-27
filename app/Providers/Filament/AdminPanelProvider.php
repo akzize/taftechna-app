@@ -64,7 +64,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 AuthUIEnhancerPlugin::make()
                 ->showEmptyPanelOnMobile(false)
-                ->formPanelPosition('left')
+                ->formPanelPosition('right')
                 ->formPanelWidth('40%')
                 ->emptyPanelBackgroundImageUrl('/images/loginpage-screen-v23.png')
         ]);
