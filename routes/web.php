@@ -5,9 +5,6 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Models\Album;
-use App\Models\News;
-use App\Models\Event;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -17,14 +14,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* ------------------------------- news routes ------------------------------ */
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 
-Route::get('/news/{id}', [NewsController::class, 'show']);
+Route::get('/news/{news:slug}', [NewsController::class, 'show']);
 
 /* -------------------------------------------------------------------------- */
 /*                                events routes                               */
 /* -------------------------------------------------------------------------- */
 Route::get('/events', [EventController::class, 'index'])->name('events');
 
-Route::get('/events/{id}', [EventController::class, 'show']);
+Route::get('/events/{event:slug}', [EventController::class, 'show']);
 
 // gallery routes
 Route::get('/gallery', [AlbumController::class, 'index'])->name('gallery');
