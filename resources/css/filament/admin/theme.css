@@ -8,7 +8,14 @@
 .custom-auth-wrapper {}
 
 /* Empty panel wrapper */
-.custom-auth-empty-panel {}
+.custom-auth-empty-panel {
+    div {
+            /* background-size: contain; */
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: right center;
+    }
+}
 
 /* Form panel wrapper */
 .custom-auth-form-panel {
