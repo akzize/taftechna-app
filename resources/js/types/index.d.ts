@@ -46,14 +46,15 @@ export interface NewsItem {
     id: string;
     title: string;
     titleAr: string;
-    titleFr: string;
+    titleFr?: string;
+    slug: string;
     date: string;
     category: string;
     categoryAr: string;
-    categoryFr: string;
+    categoryFr?: string;
     excerpt: string;
     excerptAr: string;
-    excerptFr: string;
+    excerptFr?: string;
     content: string;
     contentAr: string;
     contentFr: string;
@@ -67,6 +68,7 @@ export interface EventItem {
     title?: string;
     titleAr: string;
     titleFr?: string;
+    slug: string;
     date?: string;
     startDate: string;
     endDate: string;
