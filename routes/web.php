@@ -17,12 +17,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /* ------------------------------- news routes ------------------------------ */
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 
-Route::get('/news/{id}', function ($id) {
-    return Inertia::render('NewsDetail', [
-        'newsId' => $id,
-        'news' => News::find($id)
-    ]);
-});
+Route::get('/news/{id}', [NewsController::class, 'show']);
 
 /* -------------------------------------------------------------------------- */
 /*                                events routes                               */
