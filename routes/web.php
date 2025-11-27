@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
@@ -40,11 +41,7 @@ Route::get('/contact', function () {
     ]);
 })->name('contact');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
-});
+Route::post('/email-send', [EmailController::class, 'store'])->name('email-send');
 
 Route::fallback(function(){
     return Inertia::render('NotFound');
