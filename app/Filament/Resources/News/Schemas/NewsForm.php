@@ -39,9 +39,14 @@ class NewsForm
                     ]),
                 Textarea::make('excerpt')
                     ->label(__('resources.news.excerpt')),
+                FileUpload::make('cover_image')
+                    ->label(__('resources.news.cover_image'))
+                    ->image()
+                    ->disk('public')
+                    ->directory('news/images')
+                    ->required(),
                 RichEditor::make('content')
                     ->label(__('resources.news.content'))
-                    ->required()
                     ->toolbarButtons([
                         ['bold', 'italic', 'underline', 'strike', 'link'],
                         ['h1', 'h2', 'h3', 'alignStart', 'alignCenter', 'alignEnd'],
@@ -49,14 +54,9 @@ class NewsForm
                         ['attachFiles'], // The `customBlocks` and `mergeTags` tools are also added here if those features are used.
                         ['undo', 'redo'],
                     ])
+                    ->required()
                     ->columnSpanFull(),
 
-                FileUpload::make('cover_image')
-                    ->label(__('resources.news.cover_image'))
-                    ->image()
-                    ->disk('public')
-                    ->directory('news/images')
-                    ->required(),
                 Toggle::make('is_published')
                     ->label(__('resources.news.is_published'))
                     ->required(),

@@ -11,8 +11,4 @@ class Album extends Model
     protected $casts = [
         'images' => 'array',
     ];
-
-    public function images(){
-        return $this->hasMany(AlbumMedia::class);
-    }
 }
