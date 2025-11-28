@@ -13,7 +13,7 @@ class CreateAlbum extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $baseSlug = $data['slug'];
+        $baseSlug = Str::slug($data['title']);
         $slug = $baseSlug;
 
         // 1. Check if the generated slug already exists in the database

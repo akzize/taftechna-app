@@ -23,16 +23,6 @@ class NewsForm
             ->components([
                 TextInput::make('title_ar')
                     ->label(__('resources.news.title'))
-                    ->reactive()
-                    ->live()
-                    ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
-                        $slug = Str::slug($state);
-                        $set('slug', $slug);
-                    })
-                    ->required(),
-                TextInput::make('slug')
-                    ->reactive()
-                    ->hidden()
                     ->required(),
                 Select::make('category_id')
                     ->label(__('resources.news.category'))

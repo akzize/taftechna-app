@@ -23,7 +23,7 @@ class EditAlbum extends EditRecord
     {
         $record = $this->getRecord(); // Get the current record being edited (returns null for Create)
         // dd($data);
-        $baseSlug = $data['slug'];
+        $baseSlug = Str::slug($data['title']);
         $slug = $baseSlug;
 
         // 1. Start the uniqueness query

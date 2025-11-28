@@ -23,19 +23,7 @@ class AlbumForm
                     ->schema([
                         TextInput::make('title')
                             ->label(__('resources.album.title'))
-                            ->reactive()
-                            ->live()
-                            ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
-                                $slug = Str::slug($state);
-                                $set('slug', $slug);
-                            })
                             ->columnSpan(3)
-                            ->required(),
-                        TextInput::make('slug')
-                            ->columnSpan(3)
-                            ->hidden()
-                            ->dehydrated(true)
-                            ->readOnly()
                             ->required(),
                         Textarea::make('description')
                             ->label(__('resources.album.description'))
@@ -64,9 +52,8 @@ class AlbumForm
                     ->columnSpanFull(),
                 DatePicker::make('date')
                     ->label(__('resources.album.date'))
-
                     ->required(),
-                DateTimePicker::make('published_at')
+                DatePicker::make('published_at')
                     ->label(__('resources.album.published_at'))
                     ->default(today())
                     ->required(),

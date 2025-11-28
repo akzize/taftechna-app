@@ -23,7 +23,7 @@ class EditNews extends EditRecord
     {
         $record = $this->getRecord(); // Get the current record being edited (returns null for Create)
 
-        $baseSlug = $data['slug'];
+        $baseSlug = Str::slug($data['title_ar']);
         $slug = $baseSlug;
 
         // 1. Start the uniqueness query
