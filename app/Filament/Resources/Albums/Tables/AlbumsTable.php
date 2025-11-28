@@ -16,7 +16,9 @@ class AlbumsTable
         return $table
             ->columns([
                 ImageColumn::make('cover_image')
-                    ->label(__('resources.album.cover_image')),
+                    ->label(__('resources.album.cover_image'))
+                    ->disk('public')
+                    ->circular(),
                 TextColumn::make('title')
                     ->label(__('resources.album.title'))
                     ->searchable(),

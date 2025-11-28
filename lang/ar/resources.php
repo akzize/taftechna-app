@@ -47,6 +47,7 @@ return [
         'description' => 'الوصف',
         'cover_image' => 'صورة الغلاف',
         'album_images' => 'صور الألبوم',
+        'image' => 'الصورة',
         'date' => 'التاريخ',
         'is_published' => 'تم النشر',
         'published_at' => 'تاريخ النشر',

@@ -9,6 +9,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
@@ -18,59 +19,56 @@ class AlbumForm
     {
         return $schema
             ->components([
-                TextInput::make('title')
-                    ->label(__('resources.album.title'))
-                    ->reactive()
-                    ->live()
-                    ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
-                        $slug = Str::slug($state);
-                        $set('slug', $slug);
-                    })
-                    ->required(),
-                TextInput::make('slug')
-                    ->required(),
-                Textarea::make('description')
-                ->label(__('resources.album.description'))
-                ->columnSpanFull(),
+                Grid::make()
+                    ->schema([
+                        TextInput::make('title')
+                            ->label(__('resources.album.title'))
+                            ->reactive()
+                            ->live()
+                            ->afterStateUpdated(function (string $operation, $state, callable $set, callable $get) {
+                                $slug = Str::slug($state);
+                                $set('slug', $slug);
+                            })
+                            ->columnSpan(3)
+                            ->required(),
+                        TextInput::make('slug')
+                            ->columnSpan(3)
+                            ->hidden()
+                            ->dehydrated(true)
+                            ->readOnly()
+                            ->required(),
+                        Textarea::make('description')
+                            ->label(__('resources.album.description'))
+                            ->columnSpan(3)
+                            ->rows(10),
+                    ]),
                 FileUpload::make('cover_image')
-                ->label(__('resources.album.cover_image'))
-
-                ->image()
+                    ->label(__('resources.album.cover_image'))
+                    ->image()
                     ->disk('public')
                     ->directory('album/images')
                     ->required(),
-                // FileUpload::make('images')
-                //     ->multiple()
-                //     ->directory('album/images')
-                //     ->disk('public'),
                 Repeater::make('images')
-                ->label(__('resources.album.album_images'))
+                    ->label(__('resources.album.album_images'))
                     ->schema([
                         FileUpload::make('path')
+                            ->label(__('resources.album.image'))
                             ->disk('public')
                             ->directory('album/images')
                             ->image()
                             ->required(),
-
-                        // TextInput::make('caption')
-                        //     ->label('Caption')
-                        //     ->maxLength(255),
-
-                        // TextInput::make('alt')
-                        //     ->label('Alt Text')
-                        //     ->maxLength(255),
                     ])
                     ->grid(3)
                     ->addActionLabel(__('resources.album.add_image'))
                     ->collapsible()
                     ->columnSpanFull(),
                 DatePicker::make('date')
-                ->label(__('resources.album.date'))
+                    ->label(__('resources.album.date'))
 
-                ->required(),
+                    ->required(),
                 DateTimePicker::make('published_at')
-                ->label(__('resources.album.published_at'))
-                ->default(today())
+                    ->label(__('resources.album.published_at'))
+                    ->default(today())
                     ->required(),
             ]);
     }
